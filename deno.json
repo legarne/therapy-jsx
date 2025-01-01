@@ -4,14 +4,16 @@
   "license": "MIT",
   "exports": {
     ".": "./mod.ts",
-    "./types": "./types.d.ts"
+    "./types": "./types.d.ts",
+    "./jsx": "./jsx.ts",
+    "./jsx-types": "./jsx.d.ts"
   },
   "compilerOptions": {
     "lib": ["deno.ns", "dom", "dom.iterable"]
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any"]
+      "exclude": ["no-explicit-any", "no-namespace"]
     }
   },
   "fmt": {

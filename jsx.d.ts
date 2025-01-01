@@ -1,7 +1,7 @@
 /**
  * JSX IntrinsicElements for native DOM
  */
-export declare namespace JSX {
+export namespace JSX {
   type HTMLDOMElements = {
     [K in keyof HTMLElementTagNameMap]:
       & Omit<

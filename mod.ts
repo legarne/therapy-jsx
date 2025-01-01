@@ -1,3 +1,8 @@
+/**
+ * JSX Factory and Fragment
+ * @module
+ */
+
 function _parseChildren(children: any[]) {
   return children.map((child) => {
     if (typeof child === "string") return document.createTextNode(child);

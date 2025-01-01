@@ -1,8 +1,11 @@
 /**
  * JSX IntrinsicElements for native DOM
  */
-export declare namespace JSX {
-  type HTMLDOMElements = {
+export namespace JSX {
+  /**
+   * Native DOM types
+   */
+  export type HTMLDOMElements = {
     [K in keyof HTMLElementTagNameMap]:
       & Omit<
         Partial<HTMLElementTagNameMap[K]>,
@@ -14,9 +17,9 @@ export declare namespace JSX {
         style?: Partial<CSSStyleDeclaration>;
       };
   };
-
-  /**
-   * JSX IntrinsicElements for native DOM
-   */
-  export interface IntrinsicElements extends JSX.HTMLDOMElements {}
 }
+
+/**
+ * JSX IntrinsicElements for native DOM
+ */
+export interface IntrinsicElements extends JSX.HTMLDOMElements {}
