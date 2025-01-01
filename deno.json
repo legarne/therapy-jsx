@@ -7,17 +7,27 @@
     "./types": "./types.d.ts"
   },
   "compilerOptions": {
-    "lib": ["deno.ns", "dom", "dom.iterable"]
+    "lib": [
+      "deno.ns",
+      "dom",
+      "dom.iterable"
+    ]
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any"]
+      "exclude": [
+        "no-explicit-any"
+      ]
     }
   },
   "fmt": {
     "lineWidth": 80
   },
   "publish": {
-    "exclude": ["_tests/", "scripts/", "./.github"]
+    "exclude": [
+      "_tests/",
+      "scripts/",
+      "./.github"
+    ]
   }
 }
