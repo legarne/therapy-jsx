@@ -1,7 +1,31 @@
 /**
  * JSX Factory and Fragment
+ * Contains factory function and IntrinsicElements
  * @module
  */
+
+/**
+ * JSX IntrinsicElements for native DOM
+ */
+export declare namespace JSX {
+  type HTMLDOMElements = {
+    [K in keyof HTMLElementTagNameMap]:
+      & Omit<
+        Partial<HTMLElementTagNameMap[K]>,
+        "style"
+      >
+      & {
+        children?: HTMLElement;
+        ref?: string;
+        style?: Partial<CSSStyleDeclaration>;
+      };
+  };
+
+  /**
+   * JSX IntrinsicElements for native DOM
+   */
+  export interface IntrinsicElements extends JSX.HTMLDOMElements {}
+}
 
 function _parseChildren(children: any[]) {
   return children.map((child) => {
