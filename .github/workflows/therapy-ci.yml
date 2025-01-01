@@ -1,0 +1,56 @@
+name: therapy-ci-publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: New Version
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+        with:
+          ref: "main"
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Run linter
+        run: deno lint
+
+      - name: Run tests
+        run: deno test -A
+
+      - name: Bump version
+        run: deno run -RWE --allow-run ./scripts/bump-tag.ts ${{ inputs.version }}
+
+      - name: Push tags and commit
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git tag v${{ inputs.version }};
+          git push origin --tags;
+          git checkout main;
+          git add deno.json;
+          git commit -m "v${{ inputs.version }}";
+          git push
+
+      - name: Publish Dry Run
+        run: deno publish --dry-run
+
+      - name: JSR Publish
+        run: deno publish
