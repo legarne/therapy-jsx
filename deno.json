@@ -1,23 +1,34 @@
 {
   "name": "@therapy/jsx",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "exports": {
     ".": "./mod.ts",
     "./add-types": "./add-types.ts"
   },
   "compilerOptions": {
-    "lib": ["deno.ns", "dom", "dom.iterable"]
+    "lib": [
+      "deno.ns",
+      "dom",
+      "dom.iterable"
+    ]
   },
   "lint": {
     "rules": {
-      "exclude": ["no-explicit-any", "no-namespace"]
+      "exclude": [
+        "no-explicit-any",
+        "no-namespace"
+      ]
     }
   },
   "fmt": {
     "lineWidth": 80
   },
   "publish": {
-    "exclude": ["_tests/", "scripts/", "./.github"]
+    "exclude": [
+      "_tests/",
+      "scripts/",
+      "./.github"
+    ]
   }
 }
