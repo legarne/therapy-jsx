@@ -1,29 +1,3 @@
-/**
- * JSX IntrinsicElements for native DOM
- */
-declare global {
-  namespace JSX {
-    type HTMLDOMElements = {
-      [K in keyof HTMLElementTagNameMap]:
-        & Omit<
-          Partial<HTMLElementTagNameMap[K]>,
-          "style"
-        >
-        & {
-          children?: HTMLElement;
-          ref?: string;
-          style?: Partial<CSSStyleDeclaration>;
-        };
-    };
-
-    /**
-     * JSX IntrinsicElements for native DOM
-     */
-
-    interface IntrinsicElements extends HTMLDOMElements {}
-  }
-}
-
 function _parseChildren(children: any[]) {
   return children.map((child) => {
     if (typeof child === "string") return document.createTextNode(child);
