@@ -1,6 +1,19 @@
 function _parseChildren(children: any[]) {
   return children.map((child) => {
     if (typeof child === "string") return document.createTextNode(child);
+    if (typeof child === "number") {
+      return document.createTextNode(child.toString());
+    }
+    if (Array.isArray(child)) return document.createTextNode(child.join(", "));
+    if (typeof child === "object") {
+      try {
+        JSON.parse(child.toString());
+        return document.createTextNode(JSON.stringify(child));
+      } catch {
+        return child;
+      }
+    }
+
     return child;
   });
 }
